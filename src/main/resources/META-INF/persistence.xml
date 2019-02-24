@@ -1,26 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence" version="2.1">
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+	version="2.1">
 	<persistence-unit name="jpabook">
-	    <exclude-unlisted-classes>false</exclude-unlisted-classes>
+		<exclude-unlisted-classes>false</exclude-unlisted-classes>
 		<properties>
 			<!-- 필수 속성 -->
-			<property name="javax.persistence.jdbc.driver" value="org.h2.Driver" />
+			<property name="javax.persistence.jdbc.driver"
+				value="org.h2.Driver" />
 			<property name="javax.persistence.jdbc.user" value="test" />
 			<property name="javax.persistence.jdbc.password" value="" />
-			<!-- <property name="javax.persistence.jdbc.url" value="jdbc:h2:tcp://localhost/~/test" /> -->
-			<property name="javax.persistence.jdbc.url" value="jdbc:h2:~/test;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE" />
+			<!-- h2 h2w.bat 실행 -->
+			<!-- <property name="javax.persistence.jdbc.url" value="jdbc:h2:tcp://localhost/~/test" 
+				/> -->
+			<!-- h2 파일 -->
+			<property name="javax.persistence.jdbc.url"
+				value="jdbc:h2:~/test;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE" />
 			<!-- h2 방언 제공 -->
-			<property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect" />
-			
+			<property name="hibernate.dialect"
+				value="org.hibernate.dialect.H2Dialect" />
+
 			<!-- 옵션 -->
+			<!-- 애플리케이션 실행 시점에 데이터베이스 테이블을 자동으로 생성한다. -->
+			<property name="hibernate.hbm2ddl.auto" value="create" />
+			<property name="eclipselink.ddl-generation" value="drop-and-create-tables" />
+			<!-- <property name="eclipselink.ddl-generation" value="create-tables" /> -->
+			<property name="eclipselink.ddl-generation.output-mode" value="database" />
+			<property name="eclipselink.logging.level.sql" value="FINE" />
+			<property name="eclipselink.logging.parameters" value="true"/>
+
 			<!-- 하이버네이트가 실행한 SQL을 출력한다 -->
-			<property name="hibernate.show_sql" value="true"/>
+			<property name="hibernate.show_sql" value="true" />
 			<!-- 하이버네이트가 실행한 SQL을 출력할 때 보기 쉽게 정렬한다. -->
-			<property name="hibernate.format_sql" value="true"/>
+			<property name="hibernate.format_sql" value="true" />
 			<!-- 쿼리를 출력할 때 주석도 함께 출력한다. -->
-			<property name="hibernate.use_sql_comments" value="true"/>
+			<property name="hibernate.use_sql_comments" value="true" />
 			<!-- JPA 표준에 맞춘 새로운 키 생성 전략을 사용한다. -->
-			<property name="hibernate.id.new_generator_mappings" value="true"/>
+			<property name="hibernate.id.new_generator_mappings" value="true" />
+			
+			<!-- 이름 매핑 전략 변경 (카멜표기법 -> 언더스코어)-->
+			<property name="hibernate.ejb.naming_strategy" value="org.hibernate.cfg.ImprovedNamingStrategy"/>
+			
 		</properties>
 	</persistence-unit>
 </persistence>
