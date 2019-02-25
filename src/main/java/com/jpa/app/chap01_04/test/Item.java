@@ -6,17 +6,15 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
-public class Member {
+public class Item {
 	
 	@Id @GeneratedValue
-	@Column(name="MEMBER_ID")
+	@Column(name="ITEM_ID")
 	private Long id;
 	
 	private String name;
-	
-	private String city;
-	private String street;
-	private String zipcode;
+	private int price;
+	private int stockQuantity;
 	
 	
 	public Long getId() {
@@ -31,25 +29,18 @@ public class Member {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getCity() {
-		return city;
+	public int getPrice() {
+		return price;
 	}
-	public void setCity(String city) {
-		this.city = city;
+	public void setPrice(int price) {
+		this.price = price;
 	}
-	public String getStreet() {
-		return street;
+	public int getStockQuantity() {
+		return stockQuantity;
 	}
-	public void setStreet(String street) {
-		this.street = street;
+	public void setStockQuantity(int stockQuantity) {
+		this.stockQuantity = stockQuantity;
 	}
-	public String getZipcode() {
-		return zipcode;
-	}
-	public void setZipcode(String zipcode) {
-		this.zipcode = zipcode;
-	}
-	
 	
 	
 
