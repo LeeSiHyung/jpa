@@ -1,7 +1,9 @@
-package com.jpa.app;
+package com.jpa.app.chap01_04.study;
 
 import java.util.Date;
 
+import javax.persistence.Access;
+import javax.persistence.AccessType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -11,18 +13,22 @@ import javax.persistence.Lob;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
+import javax.persistence.UniqueConstraint;
 
 
 @Entity
 //@org.hibernate.annotations.DynamicInsert
 //@org.hibernate.annotations.DynamicUpdate
-@Table(name="MEMBER")
+@Table(name="MEMBER", uniqueConstraints = {
+	@UniqueConstraint(name="NAME_AGE_UNIQUE", columnNames= {"NAME","AGE"})	
+})
 public class Member {
 	
 	@Id
 	@Column(name="ID")
 	private String id;
-	@Column(name="NAME")
+	@Column(name="NAME", nullable=false, length=10)
 	private String username;
 	
 	private Integer age = new Integer(0);
@@ -43,6 +49,16 @@ public class Member {
 	@Lob
 	private String description;
 	
+	@Transient
+	private String firstName;
+	
+	@Transient
+	private String lastName;
+	
+	@Access(AccessType.PROPERTY)
+	public String getFullName() {
+		return firstName + lastName;
+	}
 	
 	public String getId() {
 		return id;
@@ -61,10 +77,6 @@ public class Member {
 	}
 	public void setAge(Integer age) {
 		this.age = age;
-	}
-	@Override
-	public String toString() {
-		return "Member [id=" + id + ", username=" + username + ", age=" + age + "]";
 	}
 	public RoleType getRoleType() {
 		return roleType;
@@ -90,7 +102,30 @@ public class Member {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	@Override
+	public String toString() {
+		return "Member [id=" + id + ", username=" + username + ", age=" + age + ", roleType=" + roleType
+				+ ", createdDate=" + createdDate + ", lastModifiedDate=" + lastModifiedDate + ", description="
+				+ description + ", firstName=" + firstName + ", lastName=" + lastName + "]";
+	}
+
 	
 
 }

@@ -1,4 +1,4 @@
-package com.jpa.app;
+package com.jpa.app.chap01_04.study;
 
 import java.util.List;
 
@@ -42,8 +42,12 @@ public class JpaMain {
 		member.setId(id);
 		member.setUsername("지한");
 		member.setAge(2);
+		member.setFirstName("강");
+		member.setLastName("치한");
 		
 		em.persist(member);
+		
+		System.out.println("fullname=" + member.getFullName());
 		
 		member.setAge(20);
 		
@@ -57,6 +61,8 @@ public class JpaMain {
 		List<Member> members = query.getResultList();
 		
 		System.out.println("members.size=" + members.size());
+		
+		System.out.println();
 		
 		em.remove(member);
 	}

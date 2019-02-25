@@ -10,11 +10,9 @@
 			<property name="javax.persistence.jdbc.user" value="test" />
 			<property name="javax.persistence.jdbc.password" value="" />
 			<!-- h2 h2w.bat 실행 -->
-			<!-- <property name="javax.persistence.jdbc.url" value="jdbc:h2:tcp://localhost/~/test" 
-				/> -->
+			<!-- <property name="javax.persistence.jdbc.url" value="jdbc:h2:tcp://localhost/~/test"  /> -->
 			<!-- h2 파일 -->
-			<property name="javax.persistence.jdbc.url"
-				value="jdbc:h2:~/test;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:h2:~/test;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE" />
 			<!-- h2 방언 제공 -->
 			<property name="hibernate.dialect"
 				value="org.hibernate.dialect.H2Dialect" />
