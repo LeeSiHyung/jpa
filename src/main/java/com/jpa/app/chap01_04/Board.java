@@ -1,4 +1,4 @@
-package com.jpa.app.chap01_04.study;
+package com.jpa.app.chap01_04;
 
 import java.math.BigDecimal;
 
@@ -8,7 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Entity
+// @Entity
 // accessType이 FIELD는 인스턴스 변수가 private이여도 직접 접근한다.
 // accessType이 PROPERTY getter,setter 메소드에 접근한다.
 // @Access(AccessType.FIELD)

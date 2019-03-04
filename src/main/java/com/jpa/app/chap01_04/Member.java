@@ -1,4 +1,4 @@
-package com.jpa.app.chap01_04.study;
+package com.jpa.app.chap01_04;
 
 import java.util.Date;
 
@@ -17,9 +17,9 @@ import javax.persistence.Transient;
 import javax.persistence.UniqueConstraint;
 
 
-@Entity
-//@org.hibernate.annotations.DynamicInsert
-//@org.hibernate.annotations.DynamicUpdate
+// @Entity
+// @org.hibernate.annotations.DynamicInsert
+// @org.hibernate.annotations.DynamicUpdate
 @Table(name="MEMBER", uniqueConstraints = {
 	@UniqueConstraint(name="NAME_AGE_UNIQUE", columnNames= {"NAME","AGE"})	
 })
